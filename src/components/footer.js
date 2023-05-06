@@ -50,7 +50,7 @@ const footer = () => {
         </div>
 
         <div className='flex flex-col max-w-[1240px] px-2 py-4 mx-auto justify-between sm:flex-row text-center text-gray-500'>
-        <p className='py-4'>2023 LOGO. All rights reserved</p>
+        <p className='py-4'>2023 HelpX. All rights reserved</p>
         <div className='flex justify-between sm:w-[300px] pt-4 text-2xl'>
             <FaFacebook />
             <FaInstagram />
