@@ -34,8 +34,8 @@ export default function SingleFilter() {
         {filters.map((category, idx) => (
           <button
             onClick={() => handleFilterButtonClick(category)}
-            className={`bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow ${
-              selectedFilter === category ? "bg-blue-500 text-white" : ""
+            className={`font-semibold py-2 px-4 border border-gray-400 rounded-full mx-2 my-2 shadow ${
+              selectedFilter === category ? "bg-[#CB3737] text-white" : ""
             }`}
             key={`filters-${idx}`}
           >

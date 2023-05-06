@@ -145,7 +145,7 @@ const handleAlertClick = async () => {
     <div className='flex justify-evenly'>
     <div className='flex flex-col justify-center'>
       <h1 className='sm:text-3xl text-2xl font-bold md:py-6 mx-auto'>
-        Don't be a bystander, <span className='text-[#CB3737]'>be an upstander</span>
+        Don't be a bystander, <span className='text-[#CB3737]'>be an upstander.</span>
         </h1>
         <p className='sm:text-lg text-lg font-bold text-gray-500 mx-auto italic'>Register with us now!</p>
     </div>
