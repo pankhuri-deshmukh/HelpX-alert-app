@@ -25,30 +25,63 @@ const Hero = () => {
     };
   }, []);
 
+
+  const [lat, setLat] = useState([]);
+  const [long, setLong] = useState([]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+
+    console.log("Latitude is:", lat)
+    console.log("Longitude is:", long)
+  }, [lat, long]);
+
+  function handleAlertClick () {
+    try{
+      alert(`Your coordinates are : ${lat} , ${long}`)
+    }
+    catch{
+      alert(`Error getting location: Please try again`);
+    }
+  }
+
 // Riyas code
 
-const [alertMessage, setAlertMessage] = useState(null);
+// const [alertMessage, setAlertMessage] = useState(null);
 
-const handleAlertClick = async () => {
-  try {
-    const position = await new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-    const { latitude, longitude } = position.coords;
-    const message = 'Emergency message';
+// const handleAlertClick = async () => {
+//   try {
+//     const position = await new Promise((resolve, reject) => {
+//       navigator.geolocation.getCurrentPosition(resolve, reject);
+//     });
+//     const { latitude, longitude } = position.coords;
+//     const message = 'Emergency message';
 
-    const response = await fetch('/alert', {
-      method: 'POST',
-      body: JSON.stringify({ latitude, longitude, message }),
-      headers: { 'Content-Type': 'application/json' }
-    });
+//     const response = await fetch('/alert', {
+//       method: 'POST',
+//       body: JSON.stringify({ latitude, longitude, message }),
+//       headers: { 'Content-Type': 'application/json' }
+//     });
 
-    const result = await response.json();
-    setAlertMessage(result.message);
-  } catch (error) {
-    alert(`Error getting location: ${error.message}`);
+//     const result = await response.json();
+//     setAlertMessage(result.message);
+//   } catch (error) {
+//     alert(`Error getting location: ${error.message}`);
+//   }
+// };
+//end of riya code
+const [isOpen, setIsOpen] = useState(false);
+
+  function openPopup() {
+    setIsOpen(true);
   }
-};
+
+  function closePopup() {
+    setIsOpen(false);
+  }
 
   return (
     <div>
@@ -70,7 +103,7 @@ const handleAlertClick = async () => {
         {/* <p className='text-[#EE6F57] font-bold pt-4'>
         Crime doesn't rest, and neither do we.
         </p> */}
-        <button className='bg-[#CB3737] w-[300px]  rounded-full my-6 mx-auto py-3 uppercase text-white text-3xl hover:shadow-xl font-bold' id='alert-button' onClick={handleAlertClick}>Send Alert</button>
+        <button className='bg-[#CB3737] w-[300px]  rounded-full my-6 mx-auto py-3 uppercase text-white text-3xl hover:shadow-xl font-bold' id='alert-button' onClick={openPopup}>Send Alert</button>
       </div>
       <div>
       <img
@@ -80,6 +113,35 @@ const handleAlertClick = async () => {
             />
       </div>
       </div>
+
+{/* Trial */}
+<div className={isOpen ? 'fixed bottom-10 left-28 pt-4 w-[45%] h-[70%] bg-white shadow-2xl' : 'pt-24 fixed left-[-100%]'}>
+  <div className='relative'>
+    <button className='absolute right-0 p-1 mr-1 border-2 border-[#CB3737] rounded-sm text-[#CB3737]' onClick={closePopup}>X</button>
+  </div>
+  <form className='flex flex-col items-center justify-center'>
+    <h2 className='text-2xl font-bold mb-4'>Form Title</h2>
+    <div className='flex items-center mb-4'>
+      <input type='checkbox' id='checkbox1' name='checkbox1' className='mr-2' />
+      <label htmlFor='checkbox1'>Checkbox 1</label>
+    </div>
+    <div className='flex items-center mb-4'>
+      <input type='checkbox' id='checkbox2' name='checkbox2' className='mr-2' />
+      <label htmlFor='checkbox2'>Checkbox 2</label>
+    </div>
+    <div className='flex items-center mb-4'>
+      <input type='checkbox' id='checkbox3' name='checkbox3' className='mr-2' />
+      <label htmlFor='checkbox3'>Checkbox 3</label>
+    </div>
+    <div className='mb-4'>
+      <input type='text' id='inputField' name='inputField' placeholder='Enter Text Here' className='border border-gray-400 p-2 rounded-lg w-64' />
+    </div>
+    <button className='bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600 transition duration-300 ease-in-out' onClick={handleAlertClick}>Submit</button>
+  </form>
+</div>
+
+{/* trial end */}
+
 
     <div name='platforms' className='w-full my-32'>
       <div className='max-w-[1240px] mx-auto px-2'>
