@@ -41,7 +41,7 @@ const Hero = () => {
 
   function handleAlertClick () {
     try{
-      alert(`Your coordinates are : ${lat} , ${long}`)
+      alert(`Your coordinates are : ${lat} , ${long}. \n Alert sent successfully.`)
     }
     catch{
       alert(`Error getting location: Please try again`);
@@ -115,28 +115,44 @@ const [isOpen, setIsOpen] = useState(false);
       </div>
 
 {/* Trial */}
-<div className={isOpen ? 'fixed bottom-10 left-28 pt-4 w-[45%] h-[70%] bg-white shadow-2xl' : 'pt-24 fixed left-[-100%]'}>
+<div className={isOpen ? 'fixed bottom-10 left-28 pt-1 w-[45%] h-[70%] bg-white shadow-2xl border-2 border-[#CB3737]' : 'pt-24 fixed left-[-100%]'}>
   <div className='relative'>
-    <button className='absolute right-0 p-1 mr-1 border-2 border-[#CB3737] rounded-sm text-[#CB3737]' onClick={closePopup}>X</button>
+    <button className='absolute right-0 p-1 mr-1 font-extrabold text-[#CB3737]' onClick={closePopup}>X</button>
   </div>
-  <form className='flex flex-col items-center justify-center'>
-    <h2 className='text-2xl font-bold mb-4'>Form Title</h2>
-    <div className='flex items-center mb-4'>
-      <input type='checkbox' id='checkbox1' name='checkbox1' className='mr-2' />
-      <label htmlFor='checkbox1'>Checkbox 1</label>
+  <form className='flex flex-col items-center'>
+    <h2 className='text-2xl font-bold mb-4 uppercase text-[#CB3737]'>Send Alert</h2>
+    <div className='flex flex-col'>
+      <div>
+      <div className='flex items-center mb-4'>
+      <input type='checkbox' id='Physical Assault' name='category' className='mr-2' />
+      <label htmlFor='Physical Assault'>Physical Assault</label>
     </div>
     <div className='flex items-center mb-4'>
-      <input type='checkbox' id='checkbox2' name='checkbox2' className='mr-2' />
-      <label htmlFor='checkbox2'>Checkbox 2</label>
+      <input type='checkbox' id='Sexual Assault' name='category' className='mr-2' />
+      <label htmlFor='Sexual Assault'>Sexual Assault</label>
     </div>
     <div className='flex items-center mb-4'>
-      <input type='checkbox' id='checkbox3' name='checkbox3' className='mr-2' />
-      <label htmlFor='checkbox3'>Checkbox 3</label>
+      <input type='checkbox' id='Stalking' name='category' className='mr-2' />
+      <label htmlFor='Stalking'>Stalking</label>
     </div>
-    <div className='mb-4'>
-      <input type='text' id='inputField' name='inputField' placeholder='Enter Text Here' className='border border-gray-400 p-2 rounded-lg w-64' />
+      </div>
+      <div>
+      <div className='flex items-center mb-4'>
+      <input type='checkbox' id='Kidnapping' name='category' className='mr-2' />
+      <label htmlFor='Kidnapping'>Kidnapping</label>
     </div>
-    <button className='bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600 transition duration-300 ease-in-out' onClick={handleAlertClick}>Submit</button>
+    <div className='flex items-center mb-4'>
+      <input type='checkbox' id='Hate Crime' name='category' className='mr-2' />
+      <label htmlFor='Hate Crime'>Hate Crime</label>
+    </div>
+    <div className='flex items-center mb-4'>
+      <input type='checkbox' id='Harassment' name='category' className='mr-2' />
+      <label htmlFor='Harassment'>Harassment</label>
+    </div>
+      </div>
+    </div>
+    <h2 className='text-xl font-bold mb-4 text-[#CB3737]'>Your live location is sent with this alert.</h2>
+    <button className='bg-[#CB3737] text-white px-4 py-2 rounded-lg shadow hover:bg-green-600 transition duration-300 ease-in-out' onClick={handleAlertClick}>Submit</button>
   </form>
 </div>
 

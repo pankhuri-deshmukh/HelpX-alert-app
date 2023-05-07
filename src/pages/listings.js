@@ -48,8 +48,10 @@ export default function SingleFilter() {
         {filteredItems.map((item, idx) => (
           <div key={`items-${idx}`} className="bg-white overflow-hidden shadow rounded-lg">
             <div className="p-4">
-              <p className="text-gray-900 font-medium text-lg mb-2">{item.name}</p>
-              <p className="text-gray-600 text-sm">{item.category}</p>
+              <p className={item.status === "1"? "text-[#CB3737] font-medium text-lg mb-2" : "text-gray-500 font-medium text-lg mb-2"}>{item.status === "1"? "Live": "Solved"}</p>
+              <p className="text-gray-600 text-sm">{item.description}</p>
+              <br/>
+              <p className="font-bold text-sm">{item.location}</p>
             </div>
           </div>
         ))}
